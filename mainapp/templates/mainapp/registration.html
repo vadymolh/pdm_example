@@ -1,0 +1,33 @@
+{% extends "mainapp/head.html"%}
+{% load widget_tweaks %}
+
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+    <form method="post">
+    	{% csrf_token %}
+        <ul>
+            {%for  field in form.visible_fields%}
+                <li><label for="{{field.id_for_label}}">
+                    {{ field.label }}</label></li>
+                <li><i class= "material-icons">assignment_ind<i></li>
+                {% if field.errors %}
+                    <li>{{field.errors}}</li>
+                {% endif %}
+                <li>{{field}}</li>
+                <li>{{field.help_text}}</li>
+                <br>
+            {%endfor%} 
+    	   
+        </ul>
+    	<button type="Submit" 
+    	class="btn btn-outline-info">Зареєструватись</button>
+    </form>
+    <p>Якщо ви вже зареєстровані, перейдіть на сторінку 
+    	<a onclick="M.toast({html: 'I am a toast'})" class="btn"><strong>Логін</strong></a></p>
+    
+</div>
+{%endblock%}
+

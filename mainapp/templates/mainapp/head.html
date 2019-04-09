@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+<link rel="stylesheet" href="{% static '/tinymce/css/prism.css' %}">
+<script src="{% static '/tinymce/js/prism.js' %}"></script>
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+
+
+<nav class="lime lighten-1" >
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo black-text">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      	<li><a href="/">Home</a></li>
+      	{% if user.is_authenticated %}
+      		<li><a href="/logout">logout</a></li>
+      	{% else %}
+        	<li><a href="/register">Register</a></li>
+        	<li><a href="/login">login</a></li>
+        {% endif %}
+        
+      </ul>
+    </div>
+</nav>
+{% include "includes/messaging.html" %}
+<!--<div class="container large">-->
+{% block content %}
+{% endblock %}
+<!--</div>-->
+</body>
+<footer>
+</footer> 
+</html>
